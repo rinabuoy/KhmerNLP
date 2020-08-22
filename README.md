@@ -45,6 +45,9 @@ The pytorch pre-trained model can be obtained from  https://drive.google.com/fil
 
 from predict import  segment
 t = "ចំណែកជើងទី២ នឹងត្រូវធ្វើឡើងឯប្រទេសកាតា៕"
-print(segment(t))
+print(segment(t,seg_sep = '-'))
+
+#Inference on GPU!
+#ចំណែក-ជើង-ទី-២-នឹង-ត្រូវ-ធ្វើឡើង-ឯ-ប្រទេស-កាតា-៕
 
 ```
