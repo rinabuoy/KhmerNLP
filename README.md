@@ -11,6 +11,14 @@ proper words by themselves [1; 2; 3].
 
 # Khmer Character Cluster(KCC)
 
-
+The concept of Khmer Character Cluster
+(KCC) was introduced in [3; 6]. KCC is
+the inseparable sequence of characters. In
+Khmer writing system, a vowel cannot be by
+itself; a vowel must be placed after a consonant. Here are a few examples showing that
+a word is a combination of KCCs [6]:
+* សាលាក្តី has 3 KCCs (សា+លា+ក្តី)
+* ចុកចាប់ has 4 KCCs (ចុ+ក+ចា+ប់)
+* ស្ត្រី has 1 KCC only.
 
 
