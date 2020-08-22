@@ -21,4 +21,10 @@ a word is a combination of KCCs [6]:
 * ចុកចាប់ has 4 KCCs (ចុ+ក+ចា+ប់)
 * ស្ត្រី has 1 KCC only.
 
+# BiLSTM Networks for Khmer Word Segmentation
+
+## Character Level vs KCC Level
+
+
+
 
