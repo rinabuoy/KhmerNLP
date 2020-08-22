@@ -73,3 +73,35 @@ print(segment(t,seg_sep = '-'))
 }
 ```
 
+# References
+
+[1] Vichet Chea, Ye Kyaw Thu, Chenchen
+Ding, Masao Utiyama, Andrew Finch,
+and Eiichiro Sumita. Khmer word
+segmentation using conditional random
+fields. Khmer Natural Language Processing, 2015.
+[2] Narin Bi and Nguonly Taing. Khmer
+word segmentation based on bidirectional maximal matching for
+plaintextand microsoft word. Signal and
+Information Processing Association Annual Summit and Conference (APSIPA),
+2014.
+[3] Chea Sok Huor, Top Rithy, Ros Pich
+Hemy, Vann Navy, Chin Chanthirith,
+and Chhoeun Tola. Word bigram vs
+orthographic syllable bigram in khmer
+word. PAN Localization Team, 2007.
+[4] Ye Kyaw Thu, Vichet Chea, Andrew
+Finch, Masao Utiyama, and Eiichiro
+Sumita. A large-scale study of statistical
+machine translation methods for Khmer
+language. In Proceedings of the 29th Pacific Asia Conference on Language, Information and Computation, pages 259–269,
+Shanghai, China, October 2015.
+[5] Phylypo Tum. Word Segmentation of
+Khmer Text Using Conditional Random
+Fields, June 2020.
+[6] Chea Sok Huor and Top Rithy. Detection and correction of homophonous error
+word for khmer language. 2007.
+[7] Andrej Karpathy, Justin Johnson, and
+Li Fei-Fei. Visualizing and understanding recurrent networks, 2015.
+[8] Zhiheng Huang, Wei Xu, and Kai Yu.
+Bidirectional lstm-crf models for sequence tagging, 2015.
