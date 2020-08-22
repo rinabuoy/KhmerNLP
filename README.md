@@ -28,6 +28,9 @@ a word is a combination of KCCs [6]:
 
 ## Character Level vs KCC Level
 
+![Character-Level Network](https://github.com/rinabuoy/KhmerNLP/blob/master/assets/CharacterLevelNetwork.PNG)
 
+
+![KCC-Level Network](https://github.com/rinabuoy/KhmerNLP/blob/master/assets/CharacterLevelNetwork.PNG)
 
 
