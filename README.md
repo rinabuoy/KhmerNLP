@@ -1,5 +1,7 @@
 [![DOI](https://zenodo.org/badge/289483297.svg)](https://zenodo.org/badge/latestdoi/289483297)
 
+![KCC-Level Network](https://github.com/rinabuoy/KhmerNLP/blob/master/assets/KCCNetwork.PNG)
+
 # Khmer Word Segmentation
 Word segmentation on Khmer texts is a challenging task since in Khmer texts, there is
 no explicit word delimiters such as a space.
