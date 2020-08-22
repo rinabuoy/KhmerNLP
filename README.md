@@ -51,6 +51,11 @@ print(segment(t,seg_sep = '-'))
 #ចំណែក-ជើង-ទី-២-នឹង-ត្រូវ-ធ្វើឡើង-ឯ-ប្រទេស-កាតា-៕
 
 ```
+# TODO
+
+* Character Level Model 
+* Conditional Random Field Model
+
 
 # Citation
 ```
