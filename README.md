@@ -51,3 +51,16 @@ print(segment(t,seg_sep = '-'))
 #ចំណែក-ជើង-ទី-២-នឹង-ត្រូវ-ធ្វើឡើង-ឯ-ប្រទេស-កាតា-៕
 
 ```
+
+# Citation
+```
+@misc{RinaB2020,
+  author = {Rina Buoy and Sokchea Kor},
+  title = {Khmer Word Segmentation Using BiLSTM Networks},
+  year = {2020},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/rinabuoy/KhmerNLP}}
+}
+```
+
