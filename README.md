@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/289483297.svg)](https://zenodo.org/badge/latestdoi/289483297)
+
 # Khmer Word Segmentation
 Word segmentation on Khmer texts is a challenging task since in Khmer texts, there is
 no explicit word delimiters such as a space.
