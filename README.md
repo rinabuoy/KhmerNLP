@@ -47,7 +47,7 @@ The pytorch pre-trained model can be obtained from  https://drive.google.com/fil
 
 ```python
 
-from predict import  segment
+from khmerwordsegmentor import  segment
 t = "ចំណែកជើងទី២ នឹងត្រូវធ្វើឡើងឯប្រទេសកាតា៕"
 print(segment(t,seg_sep = '-'))
 
