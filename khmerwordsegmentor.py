@@ -12,7 +12,10 @@ def segment(input_str, model_path='word_segmentation_model.pt',seg_sep = ' '):
     if not os.path.isfile(model_path):
         url = r'https://media.githubusercontent.com/media/rinabuoy/KhmerNLP/master/word_segmentation_model.pt'
         wget.download(url)
-    model = torch.load(model_path)
+    if(use_gpu)
+        model = torch.load(model_path)
+    else:
+        model = torch.load(model_path).device('cpu')
     model.eval()
     x,skcc = preprocess(input_str,model)
     inputs = torch.tensor(x).unsqueeze(0).long()
