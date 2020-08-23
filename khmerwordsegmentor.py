@@ -10,7 +10,7 @@ def segment(input_str, model_path='word_segmentation_model.pt',seg_sep = ' '):
     else: 
         print('No GPU available, inference using CPU')
     if not os.path.isfile(model_path):
-        url = r'https://media.githubusercontent.com/media/rinabuoy/KhmerNLP/master/word_segmentation_model.pt'
+        url = r'https://media.githubusercontent.com/media/rinabuoy/KhmerNLP/master/assets/word_segmentation_model.pt'
         wget.download(url)
     if(use_gpu):
         model = torch.load(model_path)
