@@ -41,8 +41,13 @@ a word is a combination of KCCs [6]:
 
 ![KCC-Level Network](https://github.com/rinabuoy/KhmerNLP/blob/master/assets/KCCNetwork.PNG)
 
+
+# Word Segmentation of Khmer Text Using Conditional Random Fields
+For CRF model for work segmentation, reader is referred to the works by [1] and [5]. The pre-trained CRF model used in the package is obtained from Phylypo Tum (https://medium.com/@phylypo/segmentation-of-khmer-text-using-conditional-random-fields-3a2d4d73956a). Phylypo Tum extends the work by [1] by introducing KCC instead of character level modelling. 
+
 # Running Word Segmentation Usign Pre-Trained KCC Network
 
+The easy to run the models without worrying about dependencies is to open 'Run_segmentation_colab.ipynb' in Google Colab. 
 
 ```python
 
@@ -59,9 +64,7 @@ print('Segmention by CRF: ', segment(ts,model='crf'))
 
 ```
 # TODO
-
 * Character Level Model 
-* Conditional Random Field Model
 
 
 # Citation
