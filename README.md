@@ -43,7 +43,6 @@ a word is a combination of KCCs [6]:
 
 # Running Word Segmentation Usign Pre-Trained KCC Network
 
-The pytorch pre-trained model can be obtained from  https://drive.google.com/file/d/1tMDSuavaTxsXTUHbtxaB3AmcNIg0nZXv/view?usp=sharing. 
 
 ```python
 
