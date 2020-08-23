@@ -1,13 +1,18 @@
 import torch 
 from utils import preprocess 
 from utils import postprocess
-
+import requests
+import os
 def segment(input_str, model_path='word_segmentation_model',seg_sep = ' '):
     use_gpu = torch.cuda.is_available()
     if(use_gpu):
         print('Inference on GPU!')
     else: 
         print('No GPU available, inference using CPU')
+    if not os.path.isfile(model_path):
+        url = 'https://drive.google.com/file/d/1tMDSuavaTxsXTUHbtxaB3AmcNIg0nZXv/view?usp=sharing'
+        r = requests.get(url, allow_redirects=True)
+        open('word_segmentation_model', 'wb').write(r.content)
     model = torch.load(model_path)
     model.eval()
     x,skcc = preprocess(input_str,model)
