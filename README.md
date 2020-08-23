@@ -47,8 +47,11 @@ a word is a combination of KCCs [6]:
 ```python
 
 from khmerwordsegmentor import  segment
-t = "ចំណែកជើងទី២ នឹងត្រូវធ្វើឡើងឯប្រទេសកាតា៕"
-print(segment(t,seg_sep = '-'))
+from khmerwordsegmentor import segment
+ts = "ចំណែកជើងទី២ នឹងត្រូវធ្វើឡើងឯប្រទេសកាតា៕"
+print('Segmention by LSTM: ', segment(ts,model='lstm'))
+print('Segmention by CRF: ', segment(ts,model='crf'))
+
 
 #Inference on GPU!
 #ចំណែក-ជើង-ទី-២-នឹង-ត្រូវ-ធ្វើឡើង-ឯ-ប្រទេស-កាតា-៕
@@ -102,6 +105,7 @@ Shanghai, China, October 2015.
 [5] Phylypo Tum. Word Segmentation of
 Khmer Text Using Conditional Random
 Fields, June 2020.
+
 [6] Chea Sok Huor and Top Rithy. Detection and correction of homophonous error
 word for khmer language. 2007.
 
