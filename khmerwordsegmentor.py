@@ -5,6 +5,7 @@ import wget
 import os
 def segment(input_str, model_path='word_segmentation_model.pt',seg_sep = ' '):
     use_gpu = torch.cuda.is_available()
+    #use_gpu = False
     if(use_gpu):
         print('Inference on GPU!')
     else: 
@@ -15,7 +16,7 @@ def segment(input_str, model_path='word_segmentation_model.pt',seg_sep = ' '):
     if(use_gpu):
         model = torch.load(model_path)
     else:
-        model = torch.load(model_path).device('cpu')
+        model = torch.load(model_path,map_location=torch.device('cpu'))
     model.eval()
     x,skcc = preprocess(input_str,model)
     inputs = torch.tensor(x).unsqueeze(0).long()
@@ -26,7 +27,7 @@ def segment(input_str, model_path='word_segmentation_model.pt',seg_sep = ' '):
     val_h = tuple([each.data for each in h])
     # get the output from the model
     pred, _ = model(inputs, val_h)
-    if(use_gpu):
+    if(not use_gpu):
         pred = pred.cpu() # move to cpu
 
     pred = torch.sigmoid(pred)
