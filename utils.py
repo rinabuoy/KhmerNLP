@@ -11,6 +11,11 @@ KHNUMBER = list(u'០១២៣៤៥៦៧៨៩0123456789') # remove 0123456789
 # lunar date:  U+19E0 to U+19FF ᧠...᧿
 KHLUNAR = list('᧠᧡᧢᧣᧤᧥᧦᧧᧨᧩᧪᧫᧬᧭᧮᧯᧰᧱᧲᧳᧴᧵᧶᧷᧸᧹᧺᧻᧼᧽᧾᧿')
 
+EN = set(u'abcdefghijklmnopqrstuvwxyz0123456789')
+
+# E=English, C=Consonant, W=wowel, N=number, O=Other, S=subcript, D=Diacritic, NS=no_space(same E)
+# roll up to: NS, C, W, S, D
+NS = 'NS'
 def pad_input(sents, seq_len, isFeature = True):
     features = np.zeros((len(sents), seq_len),dtype=int)
     if isFeature == False:
@@ -377,3 +382,103 @@ def postprocess(pred,skcc,sep=" "):
     complete = complete.strip(separator)
     complete = complete.replace(separator+" "+separator, " ")
     return complete
+
+#@title Define CRF features
+# only pass in kccs list (without labels)
+def kcc_to_features(kccs, i):
+    maxi = len(kccs)
+    kcc = kccs[i]
+
+    features = {
+        'kcc': kcc,
+        't': kcc_type(kcc),
+        'ns': is_no_space(kcc)
+    }
+    if i >= 1:
+        features.update({
+            'kcc[-1]'  : kccs[i-1],
+            'kcc[-1]t' : kcc_type(kccs[i-1]),
+            'kcc[-1:0]': kccs[i-1] + kccs[i],
+            'ns-1' : is_no_space(kccs[i-1])
+        })
+    else:
+        features['BOS'] = True
+
+    if i >= 2:
+        features.update({
+            'kcc[-2]'   : kccs[i-2],
+            'kcc[-2]t'  : kcc_type(kccs[i-2]),
+            'kcc[-2:-1]': kccs[i-2] + kccs[i-1],
+            'kcc[-2:0]' : kccs[i-2] + kccs[i-1] + kccs[i],
+        })
+    if i >= 3:
+        features.update({
+            'kcc[-3]'   : kccs[i-3],
+            'kcc[-3]t'  : kcc_type(kccs[i-3]),
+            'kcc[-3:0]' : kccs[i-3] + kccs[i-2] + kccs[i-1] + kccs[i],
+            'kcc[-3:-1]': kccs[i-3] + kccs[i-2] + kccs[i-1],
+            'kcc[-3:-2]': kccs[i-3] + kccs[i-2],
+        })
+
+    if i < maxi-1:
+        features.update({
+            'kcc[+1]'  : kccs[i+1],
+            'kcc[+1]t'  : kcc_type(kccs[i+1]),
+            'kcc[+1:0]': kccs[i] + kccs[i+1],
+            'ns+1' : is_no_space(kccs[i+1])
+
+        })
+    else:
+        features['EOS'] = True
+
+    if i < maxi-2:
+        features.update({
+            'kcc[+2]'   : kccs[i+2],
+            'kcc[+2]t'   : kcc_type(kccs[i+2]),
+            'kcc[+1:+2]': kccs[i+1] + kccs[i+2],
+            'kcc[0:+2]' : kccs[i+0] + kccs[i+1] + kccs[i+2],
+            'ns+2' : is_no_space(kccs[i+2])
+        })
+    if i < maxi-3:
+        features.update({
+            'kcc[+3]'   : kccs[i+3],
+            'kcc[+3]t'   : kcc_type(kccs[i+3]),
+            'kcc[+2:+3]': kccs[i+2] + kccs[i+3],
+            'kcc[+1:+3]': kccs[i+1] + kccs[i+2] + kccs[i+3],
+            'kcc[0:+3]' : kccs[i+0] + kccs[i+1] + kccs[i+2] + kccs[i+3],
+        })
+
+    return features
+
+def generate_kccs_label_per_phrase(sentence):
+    phrases = sentence.split()
+    print("prep_kcc_labels -- number of phrases:", len(phrases))
+    final_kccs = []
+    for phrase in phrases:
+        kccs = seg_kcc(phrase)
+        labels = [1 if (i==0) else 0 for i, k in enumerate(kccs)]
+        final_kccs.extend(list(zip(kccs,labels)))
+    return final_kccs
+
+def create_kcc_features(kccs):
+    return [kcc_to_features(kccs, i) for i in range(len(kccs))]
+
+def get_type(chr):
+  if chr.lower() in EN: return NS
+  if chr in KHCONST: return "C"
+  if chr in KHVOWEL: return "W"
+  if chr in KHNUMBER: return NS
+  if chr in KHSUB: return "S"
+  if chr in KHDIAC: return "D"
+  return NS
+
+# non-khmer character that we should not separate like number
+# multiple characters are false
+def is_no_space(k):
+  if get_type(k[0])==NS: return True
+  return False
+
+def kcc_type(k):
+  if len(k)==1: return get_type(k)
+  else: return "K" + str(len(k))
+
