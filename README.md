@@ -47,7 +47,7 @@ For CRF model for work segmentation, reader is referred to the works by [1] and 
 
 # Running Word Segmentation Usign Pre-Trained KCC Network
 
-The easy to run the models without worrying about dependencies is to open 'Run_segmentation_colab.ipynb' in Google Colab. 
+The easy way to run the segmentation models without worrying about package dependencies is to open 'Run_segmentation_colab.ipynb' in Google Colab. 
 
 ```python
 
