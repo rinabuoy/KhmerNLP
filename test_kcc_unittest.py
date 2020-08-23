@@ -1,5 +1,5 @@
 import unittest
-from predict import segment
+from khmerwordsegmentor import segment
 
 class TestKCC(unittest.TestCase):
 
