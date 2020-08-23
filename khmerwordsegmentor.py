@@ -2,6 +2,7 @@ import torch
 from utils import preprocess 
 from utils import postprocess
 import wget
+import os
 def segment(input_str, model_path='word_segmentation_model.pt',seg_sep = ' '):
     use_gpu = torch.cuda.is_available()
     if(use_gpu):
