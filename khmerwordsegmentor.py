@@ -21,7 +21,7 @@ def segment_crf(input_str, model_path='sklearn_crf_model_90k-100i.sav',seg_sep =
     kccs = seg_kcc(ts)
     features = create_kcc_features(kccs)
     if not os.path.isfile(model_path):
-        url = r'https://media.githubusercontent.com/media/rinabuoy/KhmerNLP/master/assets/word_segmentation_model.pt'
+        url = r'https://media.githubusercontent.com/media/rinabuoy/KhmerNLP/master/assets/sklearn_crf_model_90k-100i.sav'
         wget.download(url)
     loaded_model = pickle.load(open(model_path, 'rb'))
     preds = loaded_model.predict([features])[0]
