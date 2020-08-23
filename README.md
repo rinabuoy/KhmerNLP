@@ -54,7 +54,8 @@ print('Segmention by CRF: ', segment(ts,model='crf'))
 
 
 #Inference on GPU!
-#ចំណែក-ជើង-ទី-២-នឹង-ត្រូវ-ធ្វើឡើង-ឯ-ប្រទេស-កាតា-៕
+#Segmention by LSTM:  ចំណែក-ជើង-ទី-២-នឹង-ត្រូវ-ធ្វើឡើង-ឯ-ប្រទេស-កាតា-៕
+#Segmention by CRF:  ចំណែកជើង-ទី-២-នឹង-ត្រូវ-ធ្វើឡើង-ឯ-ប្រទេស-កាតា-៕
 
 ```
 # TODO
