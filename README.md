@@ -51,7 +51,6 @@ The easy to run the models without worrying about dependencies is to open 'Run_s
 
 ```python
 
-from khmerwordsegmentor import  segment
 from khmerwordsegmentor import segment
 ts = "ចំណែកជើងទី២ នឹងត្រូវធ្វើឡើងឯប្រទេសកាតា៕"
 print('Segmention by LSTM: ', segment(ts,model='lstm'))
