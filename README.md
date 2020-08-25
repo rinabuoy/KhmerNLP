@@ -65,6 +65,7 @@ print('Segmention by CRF: ', segment(ts,model='crf'))
 # TODO
 * Character Level Model 
 * Model Training 
+* Khmer Word Embedding
 
 
 # Citation
