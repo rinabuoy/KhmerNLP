@@ -1,3 +1,5 @@
-from khmerwordsegmentor import  segment
+from khmerwordsegmentor import  KhmerWordSegmentor
 t = "ចំណែកជើងទី២ នឹងត្រូវធ្វើឡើងឯប្រទេសកាតា៕"
-print(segment(t,seg_sep = '-'))
+seg = KhmerWordSegmentor()
+print(seg.segment(t, model='lstm', seg_sep = '-'))
+print(seg.segment(t, model='crf', seg_sep = '-'))
