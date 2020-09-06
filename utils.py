@@ -48,19 +48,19 @@ def split_data(X_char, y_char,chars2idx,sentence_length=100):
     print("Train",len(X_train_char), "X_train_char[0]", X_train_char[0])
     print("Test",len(X_test_char), "X_test_char[0]", X_test_char[0])
 
-    return X_train_char, X_test_char, y_train_char, y_test_char 
+    return X_train_char, X_test_char, y_train_char, y_test_char
 
 def one_hot_encode(arr, n_labels):
-    
+
     # Initialize the the encoded array
     one_hot = np.zeros((arr.size, n_labels), dtype=np.float32)
-    
+
     # Fill the appropriate elements with ones
     one_hot[np.arange(one_hot.shape[0]), arr.flatten()] = 1.
-    
+
     # Finally reshape it to get back to the original array
     one_hot = one_hot.reshape((*arr.shape, n_labels))
-    
+
     return one_hot
 
 def count_correct_word(correctstr, predictionstr):
@@ -79,7 +79,7 @@ def count_correct_word(correctstr, predictionstr):
 def get_correction_list():
     fixes=[]
     #fix bad segmented data - especially proper noun
-    fixes.append(['អា​ខោន​','អាខោន​']) #account 
+    fixes.append(['អា​ខោន​','អាខោន​']) #account
     fixes.append(["​ឱវា​ទ","​ឱវាទ"])
     fixes.append(["នៅ​សប្តា​ហ៏​","នៅ​សប្តាហ៏​"])
     fixes.append(['ស៊ុន​ ​ចាន់​ថុល','ស៊ុន​ ​ចាន់ថុល'])
@@ -234,7 +234,7 @@ def get_correction_list():
     fixes.append(['ជាបន្តបន្ទាប់','ជា​បន្តបន្ទាប់'])
     fixes.append(['ចលត័ជាប្រចាំ','ចលត័​ជា​ប្រចាំ'])
     fixes.append(['ឃុំ​ដី​ឥដ្ឋ','ឃុំ​ដីឥដ្ឋ'])
-    fixes.append(['វី​ដែ​អូ','វីដែអូ']) #misspell វីដេអូ 
+    fixes.append(['វី​ដែ​អូ','វីដែអូ']) #misspell វីដេអូ
     fixes.append(['ត្រី​ខ​','ត្រីខ​'])
     fixes.append(['ទឹក​ត្រី​','ទឹកត្រី​'])
     fixes.append(['បង្ខំឲ្យ','បង្ខំ​ឲ្យ']) # first hundred docs
@@ -340,14 +340,14 @@ def seg_kcc(str_sentence):
           #print(i," c:", c)
           cur += c
           nextchar = word[i+1] if (i+1 < len(word)) else ""
-          
+
           # cluster non-khmer chars together
-          if not is_khmer_char(c) and nextchar != " " and nextchar != "" and not is_khmer_char(nextchar): 
+          if not is_khmer_char(c) and nextchar != " " and nextchar != "" and not is_khmer_char(nextchar):
             continue
           # cluster number together
-          if c in KHNUMBER and nextchar in KHNUMBER: 
+          if c in KHNUMBER and nextchar in KHNUMBER:
             continue
-            
+
           # cluster non-khmer together
           # non-khmer character has no cluster
           if not is_khmer_char(c) or nextchar==" " or nextchar=="":
@@ -355,9 +355,9 @@ def seg_kcc(str_sentence):
               cur=""
           elif is_start_of_kcc(nextchar) and not (c in KHSUB):
               segs.append(cur)
-              cur="" 
+              cur=""
         # add space back after split
-        #segs.append(" ")   
+        #segs.append(" ")
     return segs # [:-1] # trim last space
 
 def preprocess(input_str,model):
@@ -368,7 +368,7 @@ def preprocess(input_str,model):
     return x, skcc
 
 def postprocess(pred,skcc,sep=" "):
-    separator = "-"
+    separator = sep
     tkcc = []
     for k in skcc:
       tkcc.append(k)

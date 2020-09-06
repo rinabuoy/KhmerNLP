@@ -1,8 +1,9 @@
+import sys
+import os
+sys.path.append(os.path.dirname(__file__))
 import torch
 from utils import preprocess
 from utils import postprocess
-import sys
-import os
 from utils import seg_kcc, cleanup_str,create_kcc_features,postprocess
 from sklearn_crfsuite import scorers
 from sklearn_crfsuite import metrics
