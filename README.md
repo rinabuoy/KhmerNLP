@@ -43,18 +43,19 @@ a word is a combination of KCCs [6]:
 
 
 # Word Segmentation of Khmer Text Using Conditional Random Fields
-For CRF model for work segmentation, reader is referred to the works by [1] and [5]. The pre-trained CRF model used in the package is obtained from Phylypo Tum (https://medium.com/@phylypo/segmentation-of-khmer-text-using-conditional-random-fields-3a2d4d73956a). Phylypo Tum extends the work by [1] by introducing KCC instead of character level modelling. 
+For CRF model for work segmentation, reader is referred to the works by [1] and [5]. The pre-trained CRF model used in the package is obtained from Phylypo Tum (https://medium.com/@phylypo/segmentation-of-khmer-text-using-conditional-random-fields-3a2d4d73956a). Phylypo Tum extends the work by [1] by introducing KCC instead of character level modelling.
 
 # Running Word Segmentation Usign Pre-Trained KCC Network
 
-The easy way to run the segmentation models without worrying about package dependencies is to open 'Run_segmentation_colab.ipynb' in Google Colab. 
+The easy way to run the segmentation models without worrying about package dependencies is to open 'Run_segmentation_colab.ipynb' in Google Colab.
 
 ```python
 
-from khmerwordsegmentor import segment
+from khmerwordsegmentor import KhmerWordSegmentor
+seg = KhmerWordSegmentor()
 ts = "ចំណែកជើងទី២ នឹងត្រូវធ្វើឡើងឯប្រទេសកាតា៕"
-print('Segmention by LSTM: ', segment(ts,model='lstm'))
-print('Segmention by CRF: ', segment(ts,model='crf'))
+print('Segmention by LSTM: ', seg.segment(ts,model='lstm'))
+print('Segmention by CRF: ', seg.segment(ts,model='crf'))
 
 
 #Inference on GPU!
@@ -63,8 +64,8 @@ print('Segmention by CRF: ', segment(ts,model='crf'))
 
 ```
 # TODO
-* Character Level Model 
-* Model Training 
+* Character Level Model
+* Model Training
 * Khmer Word Embedding
 
 
